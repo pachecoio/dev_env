@@ -1,0 +1,15 @@
+---
+- name: Setup Macos dev environment
+  hosts: localhost
+  become: false
+
+  tasks:
+    # - include: terminal.yaml
+    # - include: vim.yaml
+    # - include: python.yaml
+    # - include: node.yaml
+    - ansible.builtin.include_tasks: terminal.yaml
+    - ansible.builtin.include_tasks: vim.yaml
+    - ansible.builtin.include_tasks: python.yaml
+    - ansible.builtin.include_tasks: node.yaml
+  
