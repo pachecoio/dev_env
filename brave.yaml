@@ -1,0 +1,4 @@
+- name: Install Brave browser with brew
+  ansible.builtin.homebrew:
+    name: brave-browser
+    state: present
