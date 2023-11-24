@@ -3,16 +3,10 @@
     name: git
     state: present
     update_cache: yes
-  tags:
-    - git
-    - linux
   when: ansible_os_family == "Debian"
 - name: Install git Macos
   ansible.builtin.homebrew:
     name: git
     state: present
     update_homebrew: yes
-  tags:
-    - git
-    - macos
   when: ansible_os_family == "Darwin"

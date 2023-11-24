@@ -8,9 +8,14 @@
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
 
   tasks:
-    - ansible.builtin.include_tasks: ssh.yaml
-    - ansible.builtin.include_tasks: terminal.yaml
-    - ansible.builtin.include_tasks: vim.yaml
-    - ansible.builtin.include_tasks: python.yaml
-    - ansible.builtin.include_tasks: node.yaml
+    - include_tasks: ssh.yaml
+      tags: ssh
+    - include_tasks: terminal.yaml
+      tags: terminal
+    - include_tasks: vim.yaml
+      tags: vim
+    - include_tasks: python.yaml
+      tags: python
+    - include_tasks: node.yaml
+      tags: node
   

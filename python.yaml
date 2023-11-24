@@ -3,9 +3,6 @@
     name: pyenv
     state: present
     update_homebrew: yes
-  tags:
-  - python
-  - pyenv
 - name: Add pyenv to path
   ansible.builtin.shell: >
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
@@ -13,8 +10,5 @@
     echo 'eval "$(pyenv init -)"' >> ~/.zshrc
   args:
     creates: "{{ ansible_env.HOME }}/.pyenv"
-  tags:
-    - python
-    - pyenv
 
 

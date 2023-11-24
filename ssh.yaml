@@ -4,18 +4,12 @@
     dest: "{{ dest_key | dirname }}"
     mode: 0700
     state: directory
-  tags:
-    - dotfiles
-    - ssh
 - name: Install ssh key
   become_user: root
   copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
     mode: 0600
-  tags:
-    - dotfiles
-    - ssh
 # - name: Set authorized key took from file
 #   authorized_key:
 #     user: "{{ lookup('env', 'USER') }}"
