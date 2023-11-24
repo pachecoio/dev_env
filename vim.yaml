@@ -3,16 +3,28 @@
     name: neovim
     state: present
     update_homebrew: yes
+  tags:
+    - vim
 - name: Install LunarVim
   ansible.builtin.shell: >
     bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
   args:
     creates: "{{ ansible_env.HOME }}/.local/share/lunarvim"
+  tags:
+    - vim
+    - lvim
+
 - name: Cleanup LunarVim config
   ansible.builtin.shell: >
     rm -rf ~/.config/lvim
+  tags:
+    - vim
+    - lvim
 - name: Install LunarVim custom config
   ansible.builtin.git:
     dest: "~/.config/lvim"
     repo: "https://github.com/pachecoio/lvim_config"
+  tags:
+    - vim
+    - lvim
 

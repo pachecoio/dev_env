@@ -3,7 +3,12 @@
   hosts: localhost
   become: false
 
+  vars:
+    source_key: "./files/id_ed25519"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
+
   tasks:
+    - ansible.builtin.include_tasks: ssh.yaml
     - ansible.builtin.include_tasks: terminal.yaml
     - ansible.builtin.include_tasks: vim.yaml
     - ansible.builtin.include_tasks: python.yaml
