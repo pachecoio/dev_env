@@ -1,0 +1,13 @@
+- name: Get latest Go version
+  shell: |
+    curl -s https://golang.org/dl/ | grep -oP '(?<=go)[0-9\.]+(?=\.[0-9]+)' | head -n 1
+  register: go_version
+- name: Install Go Macos
+  shell: |
+    curl -s https://golang.org/dl/go{{ go_version.stdout }}.darwin-amd64.tar.gz | tar -C /usr/local -xzf -
+  when: ansible_os_family == "Darwin"
+- name: Install Go Linux
+  shell: |
+    curl -s https://golang.org/dl/go{{ go_version.stdout }}.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  when: ansible_os_family == "Debian"
+
